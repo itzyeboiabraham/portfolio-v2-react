@@ -814,7 +814,7 @@
       .container { padding: 0 1.25rem; }
       h1 { font-size: 2.4rem; }
       .form-row { grid-template-columns: 1fr; }
-      #hero { padding: 100px 0 60px; background-image: url(images/phonebg.jpg); background-position: bottom center; align-items: center; padding-top: 110px; content: ''; }
+      #hero { padding: 100px 0 60px; background-image: url(/images/phonebg.jpg); background-position: bottom center; align-items: center; padding-top: 110px; content: ''; }
       #hero::after { background: linear-gradient(to bottom, rgba(20,23,27,0.9) 0%, rgba(20,23,27,0.5) 40%, transparent 100%); }
       .hero-inner { grid-template-columns: 1fr; justify-items: center; text-align: center; }
       .hero-inner > div { grid-column: auto; }
