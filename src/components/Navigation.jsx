@@ -46,7 +46,7 @@ export default function Navigation() {
 
         <div className="nav-right">
           <span className="nav-divider" aria-hidden="true"></span>
-          <a href="files/Abraham_Tetteh_CV.pdf" download target="_blank" className="nav-cv">
+          <a href="/files/Abraham_Tetteh_CV.pdf" download target="_blank" className="nav-cv">
             <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download CV
           </a>
