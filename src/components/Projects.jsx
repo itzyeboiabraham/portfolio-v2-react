@@ -6,7 +6,7 @@ export default function Projects() {
       description: 'Multi-page responsive e-commerce site for a car dealership, featuring inventory listings, service pages, customer reviews, and contact requests.',
       tags: ['HTML', 'CSS', 'JavaScript'],
       type: 'proj-web',
-      icon: <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>,
+      image: '/images/car-site.png',
       previewUrl: 'https://itzyeboiabraham.github.io/Car-Website/',
       codeUrl: 'https://github.com/ItzyeboiAbraham/Car-Website'
     },
@@ -17,7 +17,7 @@ export default function Projects() {
       tags: ['C++', 'Console App'],
       tagClasses: ['tag-blue', 'tag-blue'],
       type: 'proj-cpp',
-      icon: <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>,
+      image: '/images/sip.png',
       codeUrl: 'https://github.com/ItzyeboiAbraham/C-plus-plus-SIP'
     },
     {
@@ -27,7 +27,7 @@ export default function Projects() {
       tags: ['JavaScript', 'Game'],
       tagClasses: ['tag-purple', 'tag-purple'],
       type: 'proj-game',
-      icon: <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>,
+      image: '/images/xoxo.jpg',
       codeUrl: 'https://github.com/ItzyeboiAbraham'
     }
   ]
@@ -37,8 +37,7 @@ export default function Projects() {
       <div className="container">
         <div className="projects-header reveal">
           <div>
-            <div className="section-label">Portfolio</div>
-            <h2>Projects</h2>
+            <h2>Portfolio</h2>
           </div>
           <a href="https://github.com/ItzyeboiAbraham?tab=repositories" target="_blank" rel="noopener" className="view-all">
             View all on GitHub
@@ -49,9 +48,7 @@ export default function Projects() {
           {projects.map((project, idx) => (
             <div key={project.id} className={`project-card reveal reveal-delay-${idx + 1}`}>
               <div className={`project-img ${project.type}`}>
-                <div className="proj-icon-wrap">
-                  {project.icon}
-                </div>
+                <img className="project-preview-image" src={project.image} alt={`${project.title} preview`} />
                 <div className="project-img-overlay">
                   {project.previewUrl && (
                     <a href={project.previewUrl} target="_blank" rel="noopener" className="proj-link">

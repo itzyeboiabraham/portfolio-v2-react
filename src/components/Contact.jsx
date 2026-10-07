@@ -31,7 +31,7 @@ export default function Contact() {
         
         if (response.ok) {
           setButtonState('success')
-          btn.innerHTML = '✓ Message sent!'
+          btn.innerHTML = '✅ Message sent!'
           btn.style.background = '#3EC97A'
           btn.style.color = '#fff'
           form.reset()
@@ -45,13 +45,13 @@ export default function Contact() {
           }, 1500)
         } else {
           setButtonState('error')
-          btn.innerHTML = '✗ Error sending message'
+          btn.innerHTML = '❌ Error sending message'
           btn.style.background = '#ff6b6b'
           btn.disabled = false
         }
       } catch (error) {
         setButtonState('error')
-        btn.innerHTML = '✗ Error sending message'
+        btn.innerHTML = '❌ Error sending message'
         btn.style.background = '#ff6b6b'
         btn.disabled = false
       }
@@ -68,12 +68,10 @@ export default function Contact() {
     <section id="contact">
       <div className="container">
         <div className="reveal">
-          <div className="section-label">Get in touch</div>
-          <h2>Let's build something together.</h2>
+          <h2>Get in touch</h2>
         </div>
         <div className="contact-grid">
           <div className="reveal">
-            <h3>Open to opportunities</h3>
             <p>Whether you have a project in mind, need a freelancer, or just want to connect, I'm always happy to chat. I typically respond within 24 hours.</p>
 
             <a href="mailto:abrahamjunior185@gmail.com" className="contact-detail">

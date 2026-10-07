@@ -3,8 +3,7 @@ export default function Services() {
     <section id="services">
       <div className="container">
         <div className="reveal">
-          <div className="section-label">What I do</div>
-          <h2>Services</h2>
+          <h2>What I do</h2>
         </div>
         
         <div className="services-grid">
