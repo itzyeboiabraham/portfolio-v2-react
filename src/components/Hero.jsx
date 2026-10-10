@@ -6,7 +6,6 @@ export default function Hero() {
       <div className="container">
         <div className="hero-inner">
           <div>
-            <div className="hero-tag">software engineer from Ghana</div>
             <h1>Hi, I'm<br/><em>Abraham.</em></h1>
             <p className="hero-bio">
               Software engineer who turns complex problems into clean, meaningful digital products from responsive websites to full-scale management systems and mobile apps.
