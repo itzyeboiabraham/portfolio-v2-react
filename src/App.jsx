@@ -2,82 +2,51 @@ import { useEffect } from 'react'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import About from './components/About'
-import Services from './components/Services'
 import Projects from './components/Projects'
+import Services from './components/Services'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
+  // Reveal-on-scroll. The active nav link is handled inside Navigation.
   useEffect(() => {
-    // Set up reveal animation observer
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+    const elements = document.querySelectorAll('.reveal')
+
+    // No IntersectionObserver: show everything instead of leaving it hidden.
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach((el) => el.classList.add('visible'))
+      return
     }
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible')
-        }
-      })
-    }, observerOptions)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // top < 0 means it's already above the viewport (page reloaded
+          // mid-scroll), so reveal it now instead of waiting for a scroll up.
+          if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+            entry.target.classList.add('visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    )
 
-    // Wait for DOM to be fully rendered
-    const revealElements = document.querySelectorAll('.reveal')
-    
-    revealElements.forEach(element => {
-      // Mark as visible immediately if already in viewport
-      const rect = element.getBoundingClientRect()
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        element.classList.add('visible')
-      } else {
-        // Otherwise observe for when it enters viewport
-        revealObserver.observe(element)
-      }
-    })
-
-    return () => {
-      revealElements.forEach(el => revealObserver.unobserve(el))
-      revealObserver.disconnect()
-    }
-  }, [])
-
-  // Active nav link tracking on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section[id]')
-      const navLinks = document.querySelectorAll('.nav-center a[data-section]')
-      const y = window.scrollY
-
-      let current = ''
-      sections.forEach(s => {
-        if (y >= s.offsetTop - 120) {
-          current = s.id
-        }
-      })
-
-      navLinks.forEach(a => {
-        if (a.dataset.section === current) {
-          a.classList.add('active')
-        } else {
-          a.classList.remove('active')
-        }
-      })
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    elements.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
   }, [])
 
   return (
     <>
+      <a className="skip-link" href="#main">Skip to content</a>
       <Navigation />
-      <Hero />
-      <About />
-      <Services />
-      <Projects />
-      <Contact />
+      <main id="main" tabIndex={-1}>
+        <Hero />
+        <About />
+        <Projects />
+        <Services />
+        <Contact />
+      </main>
       <Footer />
     </>
   )
